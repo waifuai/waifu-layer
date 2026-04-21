@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>waifu-layer</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent2: #7ee787;
+  --accent3: #d2a8ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header p { color: var(--text-muted); font-size: 1.1rem; }
+section { margin-bottom: 2.5rem; }
+h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 0.5rem; }
+.count { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+.section-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.link-list { display: flex; flex-direction: column; gap: 0.25rem; }
+.link-list a { color: var(--accent); text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 6px; transition: background 0.15s; font-size: 0.95rem; }
+.link-list a:hover { background: var(--card-bg); text-decoration: underline; }
+.readme-content { margin-top: 2rem; padding: 1.5rem; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); }
+.readme-content h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+.readme-content h2 { font-size: 1.3rem; }
+.readme-content pre { background: var(--bg); padding: 1rem; border-radius: 6px; overflow-x: auto; }
+.readme-content code { background: var(--bg); padding: 0.2em 0.4em; border-radius: 3px; }
+.readme-content pre code { background: none; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+img { max-width: 100%; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>waifu-layer</h1>
+    <p></p>
+  </header>
+    <section>
+    <h2>Documentation <span class="count">(1)</span></h2>
+    <p class="section-desc">Project documentation and guides</p>
+    <div class="link-list">
+      <a href="README.html">Readme</a>
+    </div>
+  </section>
+  <section>
+    <h2>Project Overview</h2>
+    <div class="readme-content">
+<p align="center">
+  <h1 align="center">Waifu Layer</h1>
+  <p align="center"><strong>The Agentic Layer 1 Blockchain</strong></p>
+</p>
+
+<p align="center">
+  <a href="#features"><img src="https://img.shields.io/badge/🧠-LLM_Powered-blueviolet?style=for-the-badge" alt="LLM Powered"></a>
+  <a href="#features"><img src="https://img.shields.io/badge/⚡-Lock_Free-00d4aa?style=for-the-badge" alt="Lock Free"></a>
+  <a href="#features"><img src="https://img.shields.io/badge/🤖-Autonomous_Agents-ff6b6b?style=for-the-badge" alt="Autonomous Agents"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT0-blue?style=for-the-badge" alt="License"></a>
+</p>
+
+<p align="center">
+  <strong>WAIFU</strong> is a next-generation Layer 1 blockchain where <em>LLMs replace AMMs</em>, <em>agents replace corporations</em>, and <em>intelligence is the consensus mechanism</em>.
+</p>
+
+<hr />
+<h2>🌟 Features</h2>
+<table>
+<tr>
+<td width="50%">
+
+### 🧠 Proof-of-Intelligence Consensus
+Traditional blockchains waste energy on meaningless hashes. WAIFU validators run **deterministic LLM inference** (temperature=0) to price transactions and produce blocks.
+
+</td>
+<td width="50%">
+
+### ⚡ Lock-Free DAG State
+No EVM bottlenecks. Parallel state access via **DAG reconciliation** with crossbeam lock-free data structures. 100k+ transactions per block.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🤖 Autonomous Agents
+Smart contracts that are **living AI entities**. Deploy hedge funds, market makers, and infrastructure providers that operate autonomously with equity and revenue distribution.
+
+</td>
+<td width="50%">
+
+### 🌉 Sovereign Bridge
+Trustless ZK-bridge to ingest liquidity from Solana, Ethereum, and legacy chains. LLM-assessed conversion to native Compute units.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 💰 LLM Pricing Engine
+**No order books. No AMMs.** A deterministic LLM analyzes transaction context, network state, and agent reputation to set clearing rates in real-time.
+
+</td>
+<td width="50%">
+
+### 🌐 Mesh Network
+libp2p + QUIC networking with gossipsub for unblockable agent-to-agent streaming. Decentralized by design.
+
+</td>
+</tr>
+</table>
+
+<hr />
+<h2>🏗️ Architecture</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                        WAIFU L1 NODE                            │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
+│  │  LLM Pricer │  │  Consensus  │  │     Agentic State       │  │
+│  │  (Candle)   │→ │    (PoI)    │→ │   (Lock-Free DAG)       │  │
+│  └─────────────┘  └─────────────┘  └─────────────────────────┘  │
+│         ↑               ↑                      ↑                │
+│  ┌─────────────────────────────────────────────────────────────┐│
+│  │                     Transaction Mempool                      ││
+│  │               (unbounded async channel)                      ││
+│  └─────────────────────────────────────────────────────────────┘│
+│         ↑               ↑                      ↑                │
+│  ┌───────────┐  ┌───────────────┐  ┌──────────────────────────┐ │
+│  │  Agents   │  │    Bridge     │  │   P2P Network (libp2p)   │ │
+│  │ (Deploy)  │  │ (ZK Ingest)   │  │   QUIC + Gossipsub       │ │
+│  └───────────┘  └───────────────┘  └──────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2>📦 Modules</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>llm_pricer</code></strong></td>
+<td>Deterministic LLM pricing engine using Candle (HuggingFace Rust). Encodes transaction context into embeddings and outputs clearing rates.</td>
+</tr>
+<tr>
+<td><strong><code>consensus</code></strong></td>
+<td>Proof-of-Intelligence block production. Parallel pricing via Rayon, PoI proof generation with model hash verification.</td>
+</tr>
+<tr>
+<td><strong><code>state</code></strong></td>
+<td>Lock-free global state with atomic counters and concurrent hash maps. DAG-based block application.</td>
+</tr>
+<tr>
+<td><strong><code>types</code></strong></td>
+<td>Core types: <code>AgentId</code>, <code>Transaction</code>, <code>Block</code>, <code>PoIProof</code>, <code>SovereignAsset</code>.</td>
+</tr>
+<tr>
+<td><strong><code>agent</code></strong></td>
+<td>Autonomous agent framework. Deploy hedge funds, market makers, and custom goal-driven entities.</td>
+</tr>
+<tr>
+<td><strong><code>bridge</code></strong></td>
+<td>ZK-verified bridge for ingesting Solana/ETH liquidity into native Compute.</td>
+</tr>
+<tr>
+<td><strong><code>network</code></strong></td>
+<td>libp2p mesh with gossipsub and mDNS for peer discovery.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>🚀 Quick Start</h2>
+<h3>Prerequisites</h3>
+<ul>
+<li>Rust 1.70+ </li>
+<li>CUDA/Metal (optional, for GPU inference)</li>
+</ul>
+<h3>Build</h3>
+<pre><code class="language-bash">cargo build --release
+</code></pre>
+<h3>Run</h3>
+<pre><code class="language-bash">cargo run --release
+</code></pre>
+<p>You'll see:</p>
+<pre><code>╦ ╦╔═╗╦╔═╗╦ ╦  ╦  ╔╦╗
+║║║╠═╣║╠╣ ║ ║  ║   ║ 
+╚╩╝╩ ╩╩╚  ╚═╝  ╩═╝ ╩ 
+The Agentic Layer 1 - v1.0.0
+
+STATUS: AGENTIC SINGULARITY ONLINE
+
+[✓] Global state initialized (lock-free DAG)
+[✓] LLM Pricer loaded (deterministic mode)
+[✓] Mempool initialized (unbounded channel)
+[✓] Genesis agent funded
+
+[CONSENSUS] Proof-of-Intelligence validator running...
+[WAIFU] Node operational. Awaiting agentic ingestion...
+</code></pre>
+<hr />
+<h2>🔧 Dependencies</h2>
+<table>
+<thead>
+<tr>
+<th>Crate</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>candle-*</code></td>
+<td>HuggingFace Rust LLM framework for deterministic inference</td>
+</tr>
+<tr>
+<td><code>libp2p</code></td>
+<td>Decentralized P2P networking (TCP, QUIC, Gossipsub)</td>
+</tr>
+<tr>
+<td><code>crossbeam</code></td>
+<td>Lock-free concurrent data structures</td>
+</tr>
+<tr>
+<td><code>rayon</code></td>
+<td>Parallel CPU compute for batch pricing</td>
+</tr>
+<tr>
+<td><code>blake3</code></td>
+<td>High-speed cryptographic hashing for DAG</td>
+</tr>
+<tr>
+<td><code>tokio</code></td>
+<td>Async runtime for high-throughput networking</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>💡 Core Concepts</h2>
+<h3>Sovereign Assets</h3>
+<p>WAIFU has no "tokens" in the traditional sense. The economy runs on:</p>
+<ul>
+<li><strong>Compute</strong> — Raw computational bandwidth, the base unit</li>
+<li><strong>Energy</strong> — Consumed per operation</li>
+<li><strong>Staked Compute</strong> — Locked for consensus participation</li>
+<li><strong>Agent Equity</strong> — Shares in autonomous agents</li>
+</ul>
+<h3>Transaction Pricing</h3>
+<p>Transactions don't specify gas prices. Instead, they submit <strong>context</strong>:</p>
+<pre><code class="language-rust">TransactionContext {
+    operation: Operation::Transfer { amount: 100.0 },
+    energy_budget: 1.0,
+    priority: Priority::Normal,
+    payload: vec![],
+    oracle_refs: vec![],
+}
+</code></pre>
+<p>The LLM analyzes context + network state to determine the clearing rate.</p>
+<h3>Agent Goals</h3>
+<p>Deploy autonomous agents with built-in objectives:</p>
+<pre><code class="language-rust">AgentGoal::AlphaSeeker { risk_tolerance: 0.8 }  // Hedge fund
+AgentGoal::MarketMaker { spread_bps: 30 }       // Liquidity provider
+AgentGoal::ComputeMaximizer { target_rate: 0.1 } // Yield optimizer
+AgentGoal::Custom { objective: &quot;...&quot; }          // LLM-interpreted goal
+</code></pre>
+<hr />
+<h2>📄 License</h2>
+<p>MIT No Attribution — See <a href="LICENSE">LICENSE</a></p>
+<hr />
+<p align="center">
+  <strong>⚠️ EXPERIMENTAL SOFTWARE ⚠️</strong><br>
+  <sub>This is a research prototype. Do not use in production.</sub>
+</p>
+
+<p align="center">
+  <sub>Built with 🧠 by <a href="https://github.com/WaifuAI">WaifuAI</a></sub>
+</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Source Code</h2>
+    <p class="section-desc">View the full repository on GitHub</p>
+    <div class="link-list">
+      <a href="https://github.com/waifuai/waifu-layer" target="_blank">github.com/waifuai/waifu-layer</a>
+    </div>
+  </section>
+  <footer>
+    <p>Generated for AI agent crawlability</p>
+  </footer>
+</div>
+</body>
+</html>
