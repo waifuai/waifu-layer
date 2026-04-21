@@ -30,7 +30,7 @@ serde_json = "1.0"
 serde_with = "3.11"
 
 # Networking (Mesh)
-libp2p = { version = "0.54", features = ["tcp", "quic", "noise", "yamux", "gossipsub", "mdns", "tokio"] }
+libp2p = { version = "0.54", features = ["tcp", "quic", "noise", "yamux", "gossipsub", "mdns", "tokio", "macros"] }
 
 # Time
 chrono = { version = "0.4", features = ["serde"] }
