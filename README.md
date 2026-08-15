@@ -94,13 +94,13 @@ libp2p + QUIC networking with gossipsub for unblockable agent-to-agent streaming
 
 | Module | Description |
 |--------|-------------|
-| **`llm_pricer`** | Deterministic LLM pricing engine using Candle (HuggingFace Rust). Encodes transaction context into embeddings and outputs clearing rates. |
-| **`consensus`** | Proof-of-Intelligence block production. Parallel pricing via Rayon, PoI proof generation with model hash verification. |
-| **`state`** | Lock-free global state with atomic counters and concurrent hash maps. DAG-based block application. |
+| **`llm_pricer`** | Deterministic LLM pricing engine using numpy for the underlying tensor math (a faithful substitute for Candle here, since neither ever performs real model inference -- see the module docstring). Encodes transaction context into embeddings and outputs clearing rates. |
+| **`consensus`** | Proof-of-Intelligence block production. Parallel pricing via a thread pool, PoI proof generation with model hash verification. |
+| **`state`** | Global state guarded by `threading` locks (Python has no lock-free atomics/concurrent maps). DAG-based block application. |
 | **`types`** | Core types: `AgentId`, `Transaction`, `Block`, `PoIProof`, `SovereignAsset`. |
 | **`agent`** | Autonomous agent framework. Deploy hedge funds, market makers, and custom goal-driven entities. |
-| **`bridge`** | ZK-verified bridge for ingesting Solana/ETH liquidity into native Compute. |
-| **`network`** | libp2p mesh with gossipsub and mDNS for peer discovery. |
+| **`bridge`** | ZK-"verified" (a hash-based stand-in, not real Groth16/PLONK) bridge for ingesting Solana/ETH liquidity into native Compute. |
+| **`network`** | Peer/PeerId bookkeeping stand-in; unwired and inert, same as the original (no libp2p transport was ever wired into `main`). |
 
 ---
 
@@ -108,19 +108,18 @@ libp2p + QUIC networking with gossipsub for unblockable agent-to-agent streaming
 
 ### Prerequisites
 
-- Rust 1.70+ 
-- CUDA/Metal (optional, for GPU inference)
+- Python 3.10+
 
-### Build
+### Install
 
 ```bash
-cargo build --release
+pip install -e .
 ```
 
 ### Run
 
 ```bash
-cargo run --release
+python -m waifu_layer.main
 ```
 
 You'll see:
@@ -135,7 +134,7 @@ STATUS: AGENTIC SINGULARITY ONLINE
 
 [✓] Global state initialized (lock-free DAG)
 [✓] LLM Pricer loaded (deterministic mode)
-[✓] Mempool initialized (unbounded channel)
+[✓] Mempool initialized (unbounded queue)
 [✓] Genesis agent funded
 
 [CONSENSUS] Proof-of-Intelligence validator running...
@@ -146,14 +145,13 @@ STATUS: AGENTIC SINGULARITY ONLINE
 
 ## 🔧 Dependencies
 
-| Crate | Purpose |
-|-------|---------|
-| `candle-*` | HuggingFace Rust LLM framework for deterministic inference |
-| `libp2p` | Decentralized P2P networking (TCP, QUIC, Gossipsub) |
-| `crossbeam` | Lock-free concurrent data structures |
-| `rayon` | Parallel CPU compute for batch pricing |
+| Package | Purpose |
+|---------|---------|
+| `numpy` | Tensor math for the pricing engine's matmuls |
 | `blake3` | High-speed cryptographic hashing for DAG |
-| `tokio` | Async runtime for high-throughput networking |
+| `asyncio` (stdlib) | Async runtime for the node's mempool/validator loop |
+| `threading` (stdlib) | Locking for the concurrent global state |
+| `concurrent.futures` (stdlib) | Thread pool for batch transaction pricing |
 
 ---
 
@@ -172,14 +170,14 @@ WAIFU has no "tokens" in the traditional sense. The economy runs on:
 
 Transactions don't specify gas prices. Instead, they submit **context**:
 
-```rust
-TransactionContext {
-    operation: Operation::Transfer { amount: 100.0 },
-    energy_budget: 1.0,
-    priority: Priority::Normal,
-    payload: vec![],
-    oracle_refs: vec![],
-}
+```python
+TransactionContext(
+    operation=Operation.transfer(100.0),
+    energy_budget=1.0,
+    priority=Priority.NORMAL,
+    payload=b"",
+    oracle_refs=[],
+)
 ```
 
 The LLM analyzes context + network state to determine the clearing rate.
@@ -188,11 +186,11 @@ The LLM analyzes context + network state to determine the clearing rate.
 
 Deploy autonomous agents with built-in objectives:
 
-```rust
-AgentGoal::AlphaSeeker { risk_tolerance: 0.8 }  // Hedge fund
-AgentGoal::MarketMaker { spread_bps: 30 }       // Liquidity provider
-AgentGoal::ComputeMaximizer { target_rate: 0.1 } // Yield optimizer
-AgentGoal::Custom { objective: "..." }          // LLM-interpreted goal
+```python
+AgentGoal.alpha_seeker(0.8)          # Hedge fund
+AgentGoal.market_maker(30)           # Liquidity provider
+AgentGoal.compute_maximizer(0.1)     # Yield optimizer
+AgentGoal.custom("...")              # LLM-interpreted goal
 ```
 
 ---
